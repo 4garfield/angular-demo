@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-header">
+    <button class="btn-link" type="button" (click)="toggleContent()">Collapse/Expand Card</button>
+  </div>
+  <div *ngIf="showContent" class="card-body">
+    {{ cardContent }}
+  </div>
+</div>
