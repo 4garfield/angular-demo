@@ -1,7 +1,5 @@
-/**
- * Created by garfield on 2017/5/23.
- */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 
@@ -9,7 +7,7 @@ function root(dir) {
   return path.resolve(__dirname, '.', dir);
 }
 
-const clientConfig = {
+const config = {
   devtool: 'source-map',
   target: 'web',
   entry: root('./src/main.ts'),
@@ -35,12 +33,18 @@ const clientConfig = {
     }),
     new ScriptExtPlugin({
       defaultAttribute: 'defer'
-    })
+    }),
+    // fix for 'WARNING Critical dependency: the request of a dependency is an expression'
+    new webpack.ContextReplacementPlugin(
+      /(.+)?angular(\\|\/)core(.+)?/,
+      path.join(__dirname, 'src'), // location of your src
+      {} // a map of your routes
+    ),
   ]
 };
 
 module.exports = function (options) {
   options = options || {};
 
-  return clientConfig;
+  return config;
 };

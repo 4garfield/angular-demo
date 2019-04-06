@@ -1,6 +1,3 @@
-/**
- * Created by garfield on 2017/5/23.
- */
 // fix Uncaught reflect-metadata shim is required when using class decorators
 import 'zone.js/dist/zone';
 import 'reflect-metadata';

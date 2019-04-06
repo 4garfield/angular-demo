@@ -1,6 +1,6 @@
-# Demo
+# webpack-demo
 
-It's a demo app to learn Angular.
+It's a demo app to build Angular with webpack.
 
 ## How to use
 
